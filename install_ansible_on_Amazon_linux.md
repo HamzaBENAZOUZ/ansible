@@ -11,14 +11,15 @@ Ansible is an open-source automation platform. It is very, very simple to set up
 
 1. Install python and python-pip
    ```sh
-   yum install python
-   yum install python-pip
+   cd /usr/bin
+   rm python
+   ln -s python3 python
+   #Vérification de la version 
+   python --version
+   # Python 3.7.16
+
    ```
-1. Install ansible using pip check for version
-    ```sh
-    pip install ansible
-   ansible --version
-   ```
+
    
 1. Create a user called ansadmin (on Control node and Managed host)  
    ```sh
@@ -39,6 +40,20 @@ Ansible is an open-source automation platform. It is very, very simple to set up
    ssh-copy-id ansadmin@<target-server>
    ```
 
+1. Install ansible using pip check for version ( install with other user than root)
+    ```sh
+   python3 -m pip install --user ansible    
+
+   ansible --version
+   ```
+   
+   exemple de fichier : https://github.com/ansible/ansible/blob/stable-2.9/examples/ansible.cfg
+    ```sh
+      cd /etc/ansible
+      vi ansible.cfg
+      sudo chmod 777 ansible.cfg
+    ```
+   
 1. Ansible server used to create images and store on docker registry. Hence install docker, start docker services and add ansadmin to the docker group. 
    ```sh
    yum install docker

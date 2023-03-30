@@ -1,5 +1,11 @@
 #### On RHEL 8.x server
 
+1. Install net-tools to get ifconfig installed
+
+   ```sh 
+   sudo yum install net-tools
+   ```
+
 1. Install Python latest version  (on Control node and Managed host)
    ```sh 
    yum install python3 -y
